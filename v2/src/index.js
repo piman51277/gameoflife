@@ -29,14 +29,12 @@ $(document).ready(() => {
         let offset = 0;
 
         //copy state
-        let copy = state.slice()
+        let copy =  new Uint8Array(state)
 
         //process each pixel
         for (let pos = 0; pos < state.length; pos++) {
             //count neighbors
             let count = (state[pos - height - 1] || 0) + (state[pos - height] || 0) + (state[pos - height + 1] || 0) + (state[pos - 1] || 0) + (state[pos + 1] || 0) + (state[pos + height - 1] || 0) + (state[pos + height] || 0) + (state[pos + height + 1] || 0)
-
-
 
             //change conditions
             if (state[pos] == 1 && (count > 3 || count < 2)) {
