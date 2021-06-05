@@ -36,13 +36,15 @@ $(document).ready(() => {
             //count neighbors
             let count = (state[pos - height - 1] || 0) + (state[pos - height] || 0) + (state[pos - height + 1] || 0) + (state[pos - 1] || 0) + (state[pos + 1] || 0) + (state[pos + height - 1] || 0) + (state[pos + height] || 0) + (state[pos + height + 1] || 0)
 
-            //compute offset
-            offset = pos << 2;
+
 
             //change conditions
             if (state[pos] == 1 && (count > 3 || count < 2)) {
                 //changes to dead
                 copy[pos] = 0
+
+                //compute offset
+                offset = pos << 2;
 
                 //change display
                 pixels[offset] = 0
@@ -51,6 +53,9 @@ $(document).ready(() => {
             } else if (count == 3) {
                 //changes to alive
                 copy[pos] = 1
+
+                //compute offset
+                offset = pos << 2;
 
                 //change display 
                 pixels[offset] = 255
